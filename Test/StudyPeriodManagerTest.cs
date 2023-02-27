@@ -78,7 +78,7 @@ namespace Test
 
         public StudyReportDto CreateStudyReportByDayTest()
         {
-            return studyPeriodManager.CreateStudyReportByDay(DateTime.Today).Data;
+            return studyPeriodManager.CreateStudyReportByDate(DateTime.Today).Data;
         }
     }
 }
