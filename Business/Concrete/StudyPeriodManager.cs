@@ -1,4 +1,7 @@
 ﻿using Business.Abstract;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -22,13 +25,19 @@ namespace Business.Concrete
             _studyPeriodDal = studyPeriodDal;
         }
 
-        // Implement FluentValidation into program.
-        // Write StudyPeriodValidator validation class.
-        // [ValidationAspect("StudyPeriodValidator")]
+        [ValidationAspect(typeof(StudyPeriodValidator))]
         public IResult AddStudyPeriod(StudyPeriod studyPeriod)
         {
-            _studyPeriodDal.Add(studyPeriod);
-            return new SuccessResult();
+            if (Results.ValidationResult.Success)
+            {
+                _studyPeriodDal.Add(studyPeriod);
+                return new SuccessResult();
+            }
+            else
+            {
+                return new ErrorResult(Results.ValidationResult.Message);
+            }
+
         }
 
         public IResult DeleteStudyPeriod(StudyPeriod studyPeriod)
@@ -90,10 +99,19 @@ namespace Business.Concrete
             return new SuccessDataResult<List<StudyPeriod>>(_studyPeriodDal.GetAll(x => x.DateOfStudyPeriod.Year == year));
         }
 
+        [ValidationAspect(typeof(StudyPeriodValidator))]
         public IResult UpdateStudyPeriod(StudyPeriod studyPeriod)
         {
-            _studyPeriodDal.Update(studyPeriod);
-            return new SuccessResult();
+            if (Results.ValidationResult.Success)
+            {
+                _studyPeriodDal.Update(studyPeriod);
+                return new SuccessResult();
+            }
+            else
+            {
+                return new ErrorResult(Results.ValidationResult.Message);
+            }
+
         }
 
         public IDataResult<StudyReportDto> CreateStudyReportByDateRange(DateTime startingDate, DateTime endingDate)
@@ -124,16 +142,40 @@ namespace Business.Concrete
                 totalStudiedMinutes += (studyPeriod.EndTime - studyPeriod.StartingTime).TotalMinutes;
             }
 
-            return new SuccessDataResult<StudyReportDto>(new StudyReportDto { 
+            return new SuccessDataResult<StudyReportDto>(new StudyReportDto
+            {
                 StudyPeriods = studyPeriods,
                 TotalNumberOfStudiedDays = 1,
-                TotalNumberOfStudiedHours = TimeSpan.FromMinutes(totalStudiedMinutes) 
+                TotalNumberOfStudiedHours = TimeSpan.FromMinutes(totalStudiedMinutes)
             });
         }
 
         public IDataResult<StudyPredispositionDto> CalculateStudyPredisposition()
         {
-            throw new NotImplementedException();
+            int beforeNoon = 0;
+            int afternNoon = 0;
+            var result = GetAllStudyPeriods().Data;
+
+            foreach (var item in result)
+            {
+                if (item.StartingTime < new TimeSpan(12, 0, 0) && item.StartingTime > new TimeSpan(0, 0, 0))
+                {
+                    beforeNoon++;
+                }
+                else if (item.StartingTime > new TimeSpan(12, 0, 0) && item.StartingTime < new TimeSpan(23, 59, 59))
+                {
+                    afternNoon++;
+                }
+            }
+
+            if (beforeNoon < afternNoon)
+            {
+                return new SuccessDataResult<StudyPredispositionDto>(new StudyPredispositionDto { studyPredispoisition = "Night" });
+            }
+            else
+            {
+                return new SuccessDataResult<StudyPredispositionDto>(new StudyPredispositionDto { studyPredispoisition = "Day" });
+            }
         }
 
         private int GetWeekNumber(DateTime date)

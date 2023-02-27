@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "w++s1Y+9FKsn1Qr8/N4ih57rW0jQq9nvUwaGhJsXjYwy12ZtwKJbl2gYVB/a+rAFozLtbFsZcHmZhevsKMwa3g==",
+  "dgSpecHash": "O1ZOHAUbooSepFOEj1lL5omNB91594eoQdcl6QZuSNgrY00ERVAIc+ZwYtYgGsEQklFWS32gSmK1Ae89g1c60Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\emirr\\OneDrive\\Belgeler\\My Projects\\Financial Stability Portfolio\\StudyStatisticTracker\\Entities\\Entities.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\emirr\\.nuget\\packages\\castle.core\\5.1.0\\castle.core.5.1.0.nupkg.sha512",
+    "C:\\Users\\emirr\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.3\\microsoft.entityframeworkcore.7.0.3.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.3\\microsoft.entityframeworkcore.abstractions.7.0.3.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.3\\microsoft.entityframeworkcore.analyzers.7.0.3.nupkg.sha512",

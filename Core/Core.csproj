@@ -8,11 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="Castle.Core" Version="5.1.0" />
+    <PackageReference Include="FluentValidation" Version="11.5.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Aspects\Autofac\" />
   </ItemGroup>
 
 </Project>

@@ -14,6 +14,7 @@ namespace Test
     public class StudyPeriodManagerTest
     {
         StudyPeriodManager studyPeriodManager = new StudyPeriodManager(new EfStudyPeriodDal());
+        EfStudyPeriodDal database = new EfStudyPeriodDal();
 
         public void AddStudyPeriodTest()
         {
@@ -27,13 +28,14 @@ namespace Test
             GetAllStudyPeriodsTest();
         }
 
-        public void GetAllStudyPeriodsTest()
+        public List<StudyPeriod> GetAllStudyPeriodsTest()
         {
             var result = studyPeriodManager.GetAllStudyPeriods();
-            foreach (var item in result.Data)
-            {
-                Console.WriteLine(item.Id + " | " + item.DateOfStudyPeriod + " | " + item.StartingTime + " | " + item.EndTime + " | " + item.Title + " | " + item.Annotation);
-            }
+            //foreach (var item in result.Data)
+            //{
+            //    Console.WriteLine(item.Id + " | " + item.DateOfStudyPeriod + " | " + item.StartingTime + " | " + item.EndTime + " | " + item.Title + " | " + item.Annotation);
+            //}
+            return result.Data;
         }
 
         public void DeleteStudyPeriodTest()
@@ -79,6 +81,51 @@ namespace Test
         public StudyReportDto CreateStudyReportByDayTest()
         {
             return studyPeriodManager.CreateStudyReportByDate(DateTime.Today).Data;
+        }
+
+        public void CalculateMostRepetitiveTimes()
+        {
+            var result = database.GetAll();
+            int[] startingTimes = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+            int[] endingTimes = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            foreach (var item in result)
+            {
+                for (int i = 6; i < 24; i++)
+                {
+                    if (item.StartingTime.Hours == i)
+                    {
+                        startingTimes[i - 6]++;
+                    }
+
+                    if (item.EndTime.Hours == i)
+                    {
+                        endingTimes[i - 6]++;
+                    }
+                }
+            }
+
+            Console.WriteLine("For Starting Times");
+            Console.WriteLine("-------------------------");
+            for (int i = 0; i < startingTimes.Length; i++)
+            {
+                Console.WriteLine($"0{i+6}:00 -> {startingTimes[i]}");
+            }
+            Console.WriteLine("---------------------------");
+            Console.WriteLine("For Ending Times");
+            Console.WriteLine("-------------------------");
+            for (int i = 0; i < startingTimes.Length; i++)
+            {
+                Console.WriteLine($"0{i+6}:00 -> {endingTimes[i]}");
+            }
+        }
+
+        public void CalculateWhichStartsWhichEndsMost(int startTime)
+        {
+            var result = database.GetAll(x => x.StartingTime.Hours == startTime).Select(x => x.EndTime);
+            foreach (var item in result)
+            {
+                Console.WriteLine(item + "\n");
+            }
         }
     }
 }
