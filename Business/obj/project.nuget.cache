@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "yRs1wmYD7PmHn0bAw3hvV1uoolTLW4ESYKUiYvGu5i3RzQg4GU8qsq9E4o6SaPSC7MZCc9QQyOL6g3Re3axf1w==",
+  "dgSpecHash": "ToDsgLulBx0EF5hY7pRYdB5QTvpdFJimF+rKAGG/jGS+u4UvDCdbAGnDdxn5Jf+Y9Q4ynpfNh4dwsYh1uwfjsg==",
   "success": true,
   "projectFilePath": "C:\\Users\\emirr\\OneDrive\\Belgeler\\My Projects\\Financial Stability Portfolio\\StudyStatisticTracker\\Business\\Business.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\emirr\\.nuget\\packages\\autofac\\6.5.0\\autofac.6.5.0.nupkg.sha512",
+    "C:\\Users\\emirr\\.nuget\\packages\\autofac.extensions.dependencyinjection\\8.0.0\\autofac.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "C:\\Users\\emirr\\.nuget\\packages\\autofac.extras.dynamicproxy\\6.0.1\\autofac.extras.dynamicproxy.6.0.1.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\castle.core\\5.1.0\\castle.core.5.1.0.nupkg.sha512",

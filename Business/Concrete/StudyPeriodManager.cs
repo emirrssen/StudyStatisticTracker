@@ -22,7 +22,6 @@ namespace Business.Concrete
             _studyPeriodDal = studyPeriodDal;
         }
 
-        // Search Autofac and implement into program.
         // Implement FluentValidation into program.
         // Write StudyPeriodValidator validation class.
         // [ValidationAspect("StudyPeriodValidator")]
@@ -113,7 +112,7 @@ namespace Business.Concrete
             });
         }
 
-        public IDataResult<StudyReportDto> CreateStudyReportByDay(DateTime date)
+        public IDataResult<StudyReportDto> CreateStudyReportByDate(DateTime date)
         {
             List<StudyPeriod> studyPeriods = new List<StudyPeriod>();
             var result = GetStudyPeriodsByDate(date);
@@ -125,7 +124,11 @@ namespace Business.Concrete
                 totalStudiedMinutes += (studyPeriod.EndTime - studyPeriod.StartingTime).TotalMinutes;
             }
 
-            return new SuccessDataResult<StudyReportDto>(new StudyReportDto { StudyPeriods = studyPeriods, TotalNumberOfStudiedHours = TimeSpan.FromMinutes(totalStudiedMinutes) });
+            return new SuccessDataResult<StudyReportDto>(new StudyReportDto { 
+                StudyPeriods = studyPeriods,
+                TotalNumberOfStudiedDays = 1,
+                TotalNumberOfStudiedHours = TimeSpan.FromMinutes(totalStudiedMinutes) 
+            });
         }
 
         public IDataResult<StudyPredispositionDto> CalculateStudyPredisposition()
@@ -161,31 +164,6 @@ namespace Business.Concrete
             }
 
             return totalStudiedMinutes;
-        }
-
-        private DateTime FindFirstStudyPeriodRecordDate()
-        {
-            List<DateTime> dates = new List<DateTime>();
-            var result = GetAllStudyPeriods().Data;
-
-            foreach (var item in result)
-            {
-                dates.Add(item.DateOfStudyPeriod);
-            }
-
-            return dates.Min();
-        }
-
-        private List<string> ConvertDatesIntoIso(List<DateTime> dates)
-        {
-            List<string> convertedDates = new List<string>();
-
-            foreach (var date in dates)
-            {
-                convertedDates.Add(date.ToString("yyyy-MM-ddTHH:mm:sszzz"));
-            }
-
-            return convertedDates;
         }
     }
 }

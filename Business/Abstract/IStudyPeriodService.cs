@@ -21,7 +21,7 @@ namespace Business.Abstract
         IDataResult<List<StudyPeriod>> GetStudyPeriodsByWeek();
         IDataResult<List<StudyPeriod>> GetStudyPeriodsByDateRange(DateTime startingDate, DateTime endingDate);
         IDataResult<StudyReportDto> CreateStudyReportByDateRange(DateTime startingDate, DateTime endingDate);
-        IDataResult<StudyReportDto> CreateStudyReportByDay(DateTime date);
+        IDataResult<StudyReportDto> CreateStudyReportByDate(DateTime date);
         IDataResult<StudyPredispositionDto> CalculateStudyPredisposition();
     }
 }
