@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "woLXpgSDKZl16VFQFHpQSLPUB7Ub8T3l2Kn0mqq9PoRrxRLbCiGGgqBxVaaQYbSMi5I/KFceJAty/auWLSz2Wg==",
+  "dgSpecHash": "JXlAmoKgcZCkEQq0KgcnM/H8tXYjzXe8oFFOXK5Nl8hVW34O79I6dm6kVYXqT4ahHzUcBthSGlaXlfL9f8+b7w==",
   "success": true,
   "projectFilePath": "C:\\Users\\emirr\\OneDrive\\Belgeler\\My Projects\\Financial Stability Portfolio\\StudyStatisticTracker\\Test\\Test.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,8 @@
     "C:\\Users\\emirr\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\castle.core\\5.1.0\\castle.core.5.1.0.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",
+    "C:\\Users\\emirr\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\emirr\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.1\\microsoft.data.sqlclient.5.0.1.nupkg.sha512",
@@ -22,7 +24,9 @@
     "C:\\Users\\emirr\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\7.0.3\\microsoft.entityframeworkcore.sqlserver.7.0.3.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
+    "C:\\Users\\emirr\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\emirr\\.nuget\\packages\\microsoft.extensions.configuration.binder\\7.0.3\\microsoft.extensions.configuration.binder.7.0.3.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\microsoft.extensions.logging\\7.0.0\\microsoft.extensions.logging.7.0.0.nupkg.sha512",

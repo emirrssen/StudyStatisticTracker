@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "L8p/4bvzPCvCkd8+/MrhsK53zowEeD2KoFXCc64M/d0xGFTOBS81z0eDEjjiUqUSTsSnwpgDcjWi5E6YVUwb6g==",
+  "dgSpecHash": "udIJniqgBYbtaWr0YnMy7hZO+56sgI3y4izLnaEufROV8u+y2jlr0cPx/s3z726fOjJkxMqZnTtsIDpLr3JJTQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\emirr\\OneDrive\\Belgeler\\My Projects\\Financial Stability Portfolio\\StudyStatisticTracker\\DataAccess\\DataAccess.csproj",
   "expectedPackageFiles": [
@@ -19,7 +19,9 @@
     "C:\\Users\\emirr\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\7.0.3\\microsoft.entityframeworkcore.sqlserver.7.0.3.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
+    "C:\\Users\\emirr\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\emirr\\.nuget\\packages\\microsoft.extensions.configuration.binder\\7.0.3\\microsoft.extensions.configuration.binder.7.0.3.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\emirr\\.nuget\\packages\\microsoft.extensions.logging\\7.0.0\\microsoft.extensions.logging.7.0.0.nupkg.sha512",

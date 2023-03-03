@@ -90,3 +90,5 @@ C:\Users\emirr\OneDrive\Belgeler\My Projects\Financial Stability Portfolio\Study
 C:\Users\emirr\OneDrive\Belgeler\My Projects\Financial Stability Portfolio\StudyStatisticTracker\WebAPI\obj\Debug\net6.0\WebAPI.genruntimeconfig.cache
 C:\Users\emirr\OneDrive\Belgeler\My Projects\Financial Stability Portfolio\StudyStatisticTracker\WebAPI\obj\Debug\net6.0\ref\WebAPI.dll
 C:\Users\emirr\OneDrive\Belgeler\My Projects\Financial Stability Portfolio\StudyStatisticTracker\WebAPI\bin\Debug\net6.0\FluentValidation.dll
+C:\Users\emirr\OneDrive\Belgeler\My Projects\Financial Stability Portfolio\StudyStatisticTracker\WebAPI\bin\Debug\net6.0\Microsoft.Extensions.Configuration.dll
+C:\Users\emirr\OneDrive\Belgeler\My Projects\Financial Stability Portfolio\StudyStatisticTracker\WebAPI\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Binder.dll

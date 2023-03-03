@@ -10,5 +10,6 @@ namespace Core.Constants
     public class Results
     {
         public static IResult ValidationResult;
+        public static IResult SecuredOperationResult;
     }
 }

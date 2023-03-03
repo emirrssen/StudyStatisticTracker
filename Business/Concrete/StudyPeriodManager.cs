@@ -1,7 +1,9 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.Constants;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -26,22 +28,26 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(StudyPeriodValidator))]
+        [SecuredOperation("user")]
         public IResult AddStudyPeriod(StudyPeriod studyPeriod)
         {
-            if (Results.ValidationResult.Success)
+            IResult result = BusinessRules.Run(Results.ValidationResult, Results.SecuredOperationResult);
+            if (result != null)
             {
-                _studyPeriodDal.Add(studyPeriod);
-                return new SuccessResult();
+                return result;
             }
-            else
-            {
-                return new ErrorResult(Results.ValidationResult.Message);
-            }
-
+            _studyPeriodDal.Add(studyPeriod);
+            return new SuccessResult();
         }
 
+        [SecuredOperation("user")]
         public IResult DeleteStudyPeriod(StudyPeriod studyPeriod)
         {
+            IResult result = BusinessRules.Run(Results.SecuredOperationResult);
+            if (result != null)
+            {
+                return result;
+            }
             _studyPeriodDal.Delete(studyPeriod);
             return new SuccessResult();
         }
@@ -100,18 +106,16 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(StudyPeriodValidator))]
+        [SecuredOperation("user")]
         public IResult UpdateStudyPeriod(StudyPeriod studyPeriod)
         {
-            if (Results.ValidationResult.Success)
+            IResult result = BusinessRules.Run(Results.ValidationResult, Results.SecuredOperationResult);
+            if (result != null)
             {
-                _studyPeriodDal.Update(studyPeriod);
-                return new SuccessResult();
+                return result;
             }
-            else
-            {
-                return new ErrorResult(Results.ValidationResult.Message);
-            }
-
+            _studyPeriodDal.Update(studyPeriod);
+            return new SuccessResult();
         }
 
         public IDataResult<StudyReportDto> CreateStudyReportByDateRange(DateTime startingDate, DateTime endingDate)
@@ -206,6 +210,16 @@ namespace Business.Concrete
             }
 
             return totalStudiedMinutes;
+        }
+
+        private IResult CheckValidation()
+        {
+            return Results.ValidationResult;
+        }
+
+        private IResult CheckAuthorization()
+        {
+            return Results.SecuredOperationResult;
         }
     }
 }

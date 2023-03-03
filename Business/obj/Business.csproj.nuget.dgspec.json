@@ -65,6 +65,10 @@
             "FluentValidation": {
               "target": "Package",
               "version": "[11.5.1, )"
+            },
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             }
           },
           "imports": [
@@ -134,6 +138,22 @@
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.3, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Binder": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.21.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.21.0, )"
             }
           },
           "imports": [

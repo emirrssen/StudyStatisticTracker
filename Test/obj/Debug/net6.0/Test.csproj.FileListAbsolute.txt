@@ -105,3 +105,7 @@ C:\Users\emirr\OneDrive\Belgeler\My Projects\Financial Stability Portfolio\Study
 C:\Users\emirr\OneDrive\Belgeler\My Projects\Financial Stability Portfolio\StudyStatisticTracker\Test\bin\Debug\net6.0\Autofac.Extensions.DependencyInjection.dll
 C:\Users\emirr\OneDrive\Belgeler\My Projects\Financial Stability Portfolio\StudyStatisticTracker\Test\bin\Debug\net6.0\Autofac.Extras.DynamicProxy.dll
 C:\Users\emirr\OneDrive\Belgeler\My Projects\Financial Stability Portfolio\StudyStatisticTracker\Test\bin\Debug\net6.0\FluentValidation.dll
+C:\Users\emirr\OneDrive\Belgeler\My Projects\Financial Stability Portfolio\StudyStatisticTracker\Test\bin\Debug\net6.0\Microsoft.Extensions.Configuration.dll
+C:\Users\emirr\OneDrive\Belgeler\My Projects\Financial Stability Portfolio\StudyStatisticTracker\Test\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\emirr\OneDrive\Belgeler\My Projects\Financial Stability Portfolio\StudyStatisticTracker\Test\bin\Debug\net6.0\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\emirr\OneDrive\Belgeler\My Projects\Financial Stability Portfolio\StudyStatisticTracker\Test\bin\Debug\net6.0\Microsoft.AspNetCore.Http.Features.dll
