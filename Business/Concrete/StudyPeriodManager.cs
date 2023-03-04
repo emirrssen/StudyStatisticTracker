@@ -31,10 +31,10 @@ namespace Business.Concrete
         [SecuredOperation("user")]
         public IResult AddStudyPeriod(StudyPeriod studyPeriod)
         {
-            IResult result = BusinessRules.Run(Results.ValidationResult, Results.SecuredOperationResult);
-            if (result != null)
+            IResult aspectResults = AspectResults.Check(Results.ValidationResult, Results.SecuredOperationResult);
+            if (aspectResults != null)
             {
-                return result;
+                return aspectResults;
             }
             _studyPeriodDal.Add(studyPeriod);
             return new SuccessResult();
@@ -43,17 +43,23 @@ namespace Business.Concrete
         [SecuredOperation("user")]
         public IResult DeleteStudyPeriod(StudyPeriod studyPeriod)
         {
-            IResult result = BusinessRules.Run(Results.SecuredOperationResult);
-            if (result != null)
+            IResult aspectResults = AspectResults.Check(Results.SecuredOperationResult);
+            if (aspectResults != null)
             {
-                return result;
+                return aspectResults;
             }
             _studyPeriodDal.Delete(studyPeriod);
             return new SuccessResult();
         }
 
+        [SecuredOperation("user")]
         public IDataResult<List<StudyPeriod>> GetAllStudyPeriods()
         {
+            IResult aspectResults = AspectResults.Check(Results.SecuredOperationResult);
+            if (aspectResults != null)
+            {
+                return new ErrorDataResult<List<StudyPeriod>>(null, aspectResults.Message);
+            }
             return new SuccessDataResult<List<StudyPeriod>>(_studyPeriodDal.GetAll());
         }
 
@@ -109,10 +115,10 @@ namespace Business.Concrete
         [SecuredOperation("user")]
         public IResult UpdateStudyPeriod(StudyPeriod studyPeriod)
         {
-            IResult result = BusinessRules.Run(Results.ValidationResult, Results.SecuredOperationResult);
-            if (result != null)
+            IResult aspectResults = AspectResults.Check(Results.ValidationResult, Results.SecuredOperationResult);
+            if (aspectResults != null)
             {
-                return result;
+                return aspectResults;
             }
             _studyPeriodDal.Update(studyPeriod);
             return new SuccessResult();
@@ -210,16 +216,6 @@ namespace Business.Concrete
             }
 
             return totalStudiedMinutes;
-        }
-
-        private IResult CheckValidation()
-        {
-            return Results.ValidationResult;
-        }
-
-        private IResult CheckAuthorization()
-        {
-            return Results.SecuredOperationResult;
         }
     }
 }
