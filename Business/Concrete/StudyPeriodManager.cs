@@ -20,6 +20,7 @@ namespace Business.Concrete
 {
     public class StudyPeriodManager : IStudyPeriodService
     {
+        //This is going to be use on constructor injection.
         IStudyPeriodDal _studyPeriodDal;
 
         public StudyPeriodManager(IStudyPeriodDal studyPeriodDal)

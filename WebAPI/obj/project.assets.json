@@ -1424,6 +1424,7 @@
         "dependencies": {
           "Castle.Core": "5.1.0",
           "FluentValidation": "11.5.1",
+          "Microsoft.AspNetCore.Http": "2.2.2",
           "Microsoft.EntityFrameworkCore": "7.0.3",
           "Microsoft.Extensions.Configuration": "7.0.0",
           "Microsoft.Extensions.Configuration.Binder": "7.0.3",
