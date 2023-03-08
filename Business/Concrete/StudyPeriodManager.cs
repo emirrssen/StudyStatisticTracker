@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.Constants;
 using Core.Utilities.Business;
@@ -30,17 +31,19 @@ namespace Business.Concrete
 
         [ValidationAspect(typeof(StudyPeriodValidator))]
         [SecuredOperation("user")]
+        [CacheRemoveAspect("IStudyPeriodService.Get")]
         public IResult AddStudyPeriod(StudyPeriod studyPeriod)
         {
-            IResult aspectResults = AspectResults.Check(Results.ValidationResult, Results.SecuredOperationResult);
-            if (aspectResults != null)
-            {
-                return aspectResults;
-            }
+            //IResult aspectResults = AspectResults.Check(Results.ValidationResult, Results.SecuredOperationResult);
+            //if (aspectResults != null)
+            //{
+            //    return aspectResults;
+            //}
             _studyPeriodDal.Add(studyPeriod);
             return new SuccessResult();
         }
 
+        [CacheRemoveAspect("IStudyPeriodService.Get")]
         [SecuredOperation("user")]
         public IResult DeleteStudyPeriod(StudyPeriod studyPeriod)
         {
@@ -57,10 +60,12 @@ namespace Business.Concrete
         public IDataResult<List<StudyPeriod>> GetAllStudyPeriods()
         {
             IResult aspectResults = AspectResults.Check(Results.SecuredOperationResult);
+
             if (aspectResults != null)
             {
                 return new ErrorDataResult<List<StudyPeriod>>(null, aspectResults.Message);
             }
+
             return new SuccessDataResult<List<StudyPeriod>>(_studyPeriodDal.GetAll());
         }
 
@@ -112,6 +117,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<StudyPeriod>>(_studyPeriodDal.GetAll(x => x.DateOfStudyPeriod.Year == year));
         }
 
+        [CacheRemoveAspect("IStudyPeriodService.Get")]
         [ValidationAspect(typeof(StudyPeriodValidator))]
         [SecuredOperation("user")]
         public IResult UpdateStudyPeriod(StudyPeriod studyPeriod)

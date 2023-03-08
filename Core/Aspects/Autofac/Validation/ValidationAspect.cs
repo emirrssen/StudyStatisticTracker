@@ -1,6 +1,7 @@
 ﻿using Castle.DynamicProxy;
 using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Interceptors;
+using Core.Utilities.Results;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -22,14 +23,20 @@ namespace Core.Aspects.Autofac.Validation
 
             _validatorType = validatorType;
         }
-        protected override void OnBefore(IInvocation invocation)
+        public override void Intercept(IInvocation invocation)
         {
             var validator = (IValidator)Activator.CreateInstance(_validatorType);
             var entityType = _validatorType.BaseType.GetGenericArguments()[0];
             var entities = invocation.Arguments.Where(t => t.GetType() == entityType);
             foreach (var entity in entities)
             {
-                ValidationTool.Validate(validator, entity);
+                var result = ValidationTool.Validate(validator, entity);
+                if (!result.Success)
+                {
+                    invocation.ReturnValue = new ErrorResult(result.Message);
+                    return;
+                }
+                invocation.Proceed();
             }
         }
     }

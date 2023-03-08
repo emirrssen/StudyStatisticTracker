@@ -16,6 +16,7 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(s => s.EndTime).NotEmpty();
             RuleFor(s => s.DateOfStudyPeriod).NotEmpty();
             RuleFor(s => s.Title).NotEmpty();
+            RuleFor(s => s.Title).MinimumLength(2);
         }
     }
 }
