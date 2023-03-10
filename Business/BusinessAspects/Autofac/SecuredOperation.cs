@@ -1,4 +1,5 @@
-﻿using Castle.DynamicProxy;
+﻿using Business.Constants;
+using Castle.DynamicProxy;
 using Core.Constants;
 using Core.Extensions;
 using Core.Utilities.Interceptors;
@@ -9,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,13 +36,10 @@ namespace Business.BusinessAspects.Autofac
             {
                 if (roleClaims.Contains(role))
                 {
-                    Results.SecuredOperationResult = new SuccessResult();
-                }
-                else
-                {
-                    Results.SecuredOperationResult = new ErrorResult("Authorization Denied!");
+                    return;
                 }
             }
+            throw new Exception(Messages.AuthorizationDenied);
         }
     }
 }

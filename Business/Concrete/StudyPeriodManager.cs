@@ -21,7 +21,6 @@ namespace Business.Concrete
 {
     public class StudyPeriodManager : IStudyPeriodService
     {
-        //This is going to be use on constructor injection.
         IStudyPeriodDal _studyPeriodDal;
 
         public StudyPeriodManager(IStudyPeriodDal studyPeriodDal)
@@ -34,11 +33,6 @@ namespace Business.Concrete
         [CacheRemoveAspect("IStudyPeriodService.Get")]
         public IResult AddStudyPeriod(StudyPeriod studyPeriod)
         {
-            //IResult aspectResults = AspectResults.Check(Results.ValidationResult, Results.SecuredOperationResult);
-            //if (aspectResults != null)
-            //{
-            //    return aspectResults;
-            //}
             _studyPeriodDal.Add(studyPeriod);
             return new SuccessResult();
         }
@@ -47,11 +41,6 @@ namespace Business.Concrete
         [SecuredOperation("user")]
         public IResult DeleteStudyPeriod(StudyPeriod studyPeriod)
         {
-            IResult aspectResults = AspectResults.Check(Results.SecuredOperationResult);
-            if (aspectResults != null)
-            {
-                return aspectResults;
-            }
             _studyPeriodDal.Delete(studyPeriod);
             return new SuccessResult();
         }
@@ -59,13 +48,6 @@ namespace Business.Concrete
         [SecuredOperation("user")]
         public IDataResult<List<StudyPeriod>> GetAllStudyPeriods()
         {
-            IResult aspectResults = AspectResults.Check(Results.SecuredOperationResult);
-
-            if (aspectResults != null)
-            {
-                return new ErrorDataResult<List<StudyPeriod>>(null, aspectResults.Message);
-            }
-
             return new SuccessDataResult<List<StudyPeriod>>(_studyPeriodDal.GetAll());
         }
 

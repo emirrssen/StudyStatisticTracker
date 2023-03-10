@@ -23,20 +23,14 @@ namespace Core.Aspects.Autofac.Validation
 
             _validatorType = validatorType;
         }
-        public override void Intercept(IInvocation invocation)
+        protected override void OnBefore(IInvocation invocation)
         {
             var validator = (IValidator)Activator.CreateInstance(_validatorType);
             var entityType = _validatorType.BaseType.GetGenericArguments()[0];
             var entities = invocation.Arguments.Where(t => t.GetType() == entityType);
             foreach (var entity in entities)
             {
-                var result = ValidationTool.Validate(validator, entity);
-                if (!result.Success)
-                {
-                    invocation.ReturnValue = new ErrorResult(result.Message);
-                    return;
-                }
-                invocation.Proceed();
+                ValidationTool.Validate(validator, entity);
             }
         }
     }
