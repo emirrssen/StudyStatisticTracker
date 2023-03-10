@@ -8,8 +8,8 @@ using Core.Exceptions.Base;
 
 namespace Core.Exceptions
 {
-    public class AuthorizationException : ExceptionBase
+    public class ValidatorException : ExceptionBase
     {
-        public AuthorizationException(string message) : base(message, HttpStatusCode.Unauthorized) { }
+        public ValidatorException(string message) : base(message, HttpStatusCode.BadRequest) { }
     }
 }

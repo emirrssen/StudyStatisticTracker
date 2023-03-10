@@ -1,4 +1,5 @@
-﻿using Core.Utilities.Results;
+﻿using Core.Exceptions;
+using Core.Utilities.Results;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace Core.CrossCuttingConcerns.Validation.FluentValidation
 
             if (!result.IsValid)
             {
-                throw new ValidationException(result.Errors);
+                throw new ValidatorException(result.Errors.ToString());
             }
         }
     }

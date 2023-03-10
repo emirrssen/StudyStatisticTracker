@@ -1,4 +1,5 @@
 ﻿using Core.Exceptions;
+using Core.Exceptions.Base;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -25,35 +26,34 @@ namespace Core.Configurations
             {
                 await _next(context);
             }
-            catch (Exception ex)
+            catch (ExceptionBase ex)
             {
 
                 await HandleExceptionAsync(context, ex);
             }
         }
 
-        private static Task HandleExceptionAsync(HttpContext context, Exception ex)
+        private static Task HandleExceptionAsync(HttpContext context, ExceptionBase ex)
         {
             HttpStatusCode status;
-            var stackTrace = string.Empty;
+            var stackTrace = String.Empty;
             string message = "";
 
-            var exceptionType = ex.GetType();
-
-            if (exceptionType == typeof(AuthorizationException))
+            if (ex.StatusCode == null)
             {
-                message = ex.Message;
-                status = HttpStatusCode.Unauthorized;
+                status = HttpStatusCode.InternalServerError;
                 stackTrace = ex.StackTrace;
+                message = ex.Message;
             }
             else
             {
-                message = ex.Message;
-                status = HttpStatusCode.InternalServerError;
+                status = ex.StatusCode;
                 stackTrace = ex.StackTrace;
+                message = ex.Message;
             }
 
-            var exceptionResult = JsonSerializer.Serialize(new { error = message, stackTrace });
+            var exceptionResult = JsonSerializer.Serialize(new { error = message });
+            // stackTrace loglama için kullanılabilir.
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)status;
 
