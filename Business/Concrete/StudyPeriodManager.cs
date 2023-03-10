@@ -3,7 +3,6 @@ using Business.BusinessAspects.Autofac;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
-using Core.Constants;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -104,11 +103,6 @@ namespace Business.Concrete
         [SecuredOperation("user")]
         public IResult UpdateStudyPeriod(StudyPeriod studyPeriod)
         {
-            IResult aspectResults = AspectResults.Check(Results.ValidationResult, Results.SecuredOperationResult);
-            if (aspectResults != null)
-            {
-                return aspectResults;
-            }
             _studyPeriodDal.Update(studyPeriod);
             return new SuccessResult();
         }

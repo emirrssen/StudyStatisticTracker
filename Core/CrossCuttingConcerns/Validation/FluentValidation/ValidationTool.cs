@@ -1,5 +1,4 @@
-﻿using Core.Constants;
-using Core.Utilities.Results;
+﻿using Core.Utilities.Results;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
